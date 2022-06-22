@@ -1,25 +1,31 @@
-const h1 = document.querySelector("#title");
+//-------Login Form-------
 
-//classname 을 추가하고 삭제하며 css파일을 통해 style 넣기
-function handleTitleClick() {
-    //-------Code 1.-------
-    // const clickedClass = "clicked";
-    // if (h1.className === clickedClass) {
-    //     h1.className = "";
-    // } else {
-    //     h1.className = clickedClass;
-    // }
+const loginForm = document.querySelector(".login-form");
+const loginInput = loginForm.querySelector(".login-input");
 
-    //-------Code 1.1-------
-    // const clickedClass = "clicked";
-    // if (h1.classList.contains(clickedClass)) {
-    //     h1.classList.remove(clickedClass);
-    // } else {
-    //     h1.classList.add(clickedClass);
-    // }
-
-//-------Code 1.2-------
-    h1.classList.toggle("clicked");
+function onLoginSubmit(event) {
+    event.preventDefault();
+    console.log(event);
+    //submitevent{}
 }
 
-h1.addEventListener("click", handleTitleClick);
+loginForm.addEventListener("submit", onLoginSubmit);
+
+//-------Link tag-------
+
+const link = document.querySelector("a");
+
+function handleLinkClick(event) {
+    event.preventDefault();
+    console.dir(event);
+    //pointerevent{}
+}
+
+link.addEventListener("click", handleLinkClick);
+
+//addEventListener 안에 있는 함수는 직접 실행하지 않는다
+//브라우저가 실행시켜주고
+//브라우저에서 해당 이벤트에 대한 정보 즉, object를 가지게 된다.
+//addEventListener의 함수에서 object에 대한 자리만 할당해주면
+//해당 이벤트가 발생시킨 정보들에 대한 object들을 볼 수 있다!
+//이때 해당 이벤트가 가진 기본 Default값을 발생시키지 않기 하게 위해선 preventDefault를 이용하여 막을 수 있다!
