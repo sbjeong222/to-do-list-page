@@ -1,40 +1,29 @@
-//Array
-
-const dayOfWeek = ["mon", "tue", "wed", "thu", "fri", "sat"];
-
-dayOfWeek.push("sun");
-console.log(dayOfWeek);
-dayOfWeek.pop();
-console.log(dayOfWeek);
-
-//Object
-
-const player = {
-    age: 22,
-    job: "programmer",
-    heathy: true,
-};
-
-console.log(player);
-player.name = "jaeyoon"; //name porperty 추가
-console.log(player);
-
-player.age = player.age + 1; // 기존  property 변경사항 추가 const 인데 왜 바뀌지?
-console.log(player.age); // 객체 전체를 바꾸는게 아니면 객체안의 변경은 가능하다  안되는코드 player=true;
-
-//Function
-
-function sayHello(name, a, b) {
-    console.log(`hello ${name} age : ${a} ~!`);
-}
-sayHello("jjy", 33);
-
-const player2 = {
-    name: "jjy",
-    sayHello2: function (name) {
-        console.log(`hello ${name} ~!`);
+const calculate = {
+    add: function (number1, number2) {
+        console.log(number1 + number2);
+    },
+    minus: function (number1, number2) {
+        return number1 - number2;
+    },
+    divide: function (number1, number2) {
+        return number1 / number2;
+    },
+    times: function (number1, number2) {
+        return number1 * number2;
+    },
+    power: function (number1, number2) {
+        return number1 ** number2;
     },
 };
 
-player2.sayHello2("jjjjj");
-player2.sayHello2("hhhhh");
+
+//console.log 와 return 의 차이 
+
+const Add = calculate.add(1, 2);
+console.log(Add); // 결과값이 undifined 로 찍힌다.
+
+const Minus = calculate.minus(1, 2);
+console.log(Minus); // 결과값이 -1 로 찍힌다.
+
+//console.log 는 보여주기만 하고 값으로 저장되지 않는다.
+//return 은 값으로 저장되어 변수에 넣어 사용할 수 있다.
