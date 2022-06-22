@@ -1,29 +1,15 @@
-const calculate = {
-    add: function (number1, number2) {
-        console.log(number1 + number2);
-    },
-    minus: function (number1, number2) {
-        return number1 - number2;
-    },
-    divide: function (number1, number2) {
-        return number1 / number2;
-    },
-    times: function (number1, number2) {
-        return number1 * number2;
-    },
-    power: function (number1, number2) {
-        return number1 ** number2;
-    },
-};
+const age = parseInt(prompt(" how old are you?"));
 
-
-//console.log 와 return 의 차이 
-
-const Add = calculate.add(1, 2);
-console.log(Add); // 결과값이 undifined 로 찍힌다.
-
-const Minus = calculate.minus(1, 2);
-console.log(Minus); // 결과값이 -1 로 찍힌다.
-
-//console.log 는 보여주기만 하고 값으로 저장되지 않는다.
-//return 은 값으로 저장되어 변수에 넣어 사용할 수 있다.
+if (isNaN(age) || age < 0) {
+    console.log("please write a number!");
+} else if (age < 18) {
+    console.log("You so young.");
+} else if (age > 18 && age < 100) {
+    console.log("Enjoy your life.");
+} else if (age > 80) {
+    console.log("your can live infinite life");
+} else if (age === 100) {
+    console.log("congratulation your 100th birth day");
+}
+// age 에 100 을 입력 하니까  "your can live infinite life" 만 나옴
+// 코드를 위에서 아래로 순서대로 읽어내려와서 걸리는것  age === 100 코드를 위로 올리면 해결됨.
