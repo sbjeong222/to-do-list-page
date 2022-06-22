@@ -10,3 +10,7 @@ h1 {
 .clicked {
     color: tomato;
 }
+
+.fontstyle {
+    font-size: 30px;
+}
