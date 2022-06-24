@@ -2,30 +2,35 @@
 
 const loginForm = document.querySelector(".login-form");
 const loginInput = loginForm.querySelector(".login-input");
+const greeting = document.querySelector("h1");
+
+const HIDDEN_CLASSNAME = "hidden";
+const USERNAME_KEY = "username";
+const savedUsername = localStorage.getItem(USERNAME_KEY);
 
 function onLoginSubmit(event) {
     event.preventDefault();
-    console.log(event);
-    //submitevent{}
+    loginForm.classList.add(HIDDEN_CLASSNAME);
+    const username = loginInput.value;
+    localStorage.setItem(USERNAME_KEY, username);
+    paintGreeting(username);
 }
 
-loginForm.addEventListener("submit", onLoginSubmit);
-
-//-------Link tag-------
-
-const link = document.querySelector("a");
-
-function handleLinkClick(event) {
-    event.preventDefault();
-    console.dir(event);
-    //pointerevent{}
+function paintGreeting(username) {
+    greeting.innerText = `Welcome ${username}!`;
+    greeting.classList.remove(HIDDEN_CLASSNAME);
 }
 
-link.addEventListener("click", handleLinkClick);
+if (savedUsername === null) {
+    loginForm.classList.remove(HIDDEN_CLASSNAME);
+    loginForm.addEventListener("submit", onLoginSubmit);
+} else {
+    paintGreeting(savedUsername);
+}
 
-//addEventListener 안에 있는 함수는 직접 실행하지 않는다
-//브라우저가 실행시켜주고
-//브라우저에서 해당 이벤트에 대한 정보 즉, object를 가지게 된다.
-//addEventListener의 함수에서 object에 대한 자리만 할당해주면
-//해당 이벤트가 발생시킨 정보들에 대한 object들을 볼 수 있다!
-//이때 해당 이벤트가 가진 기본 Default값을 발생시키지 않기 하게 위해선 preventDefault를 이용하여 막을 수 있다!
+console.log(localStorage);
+
+//처음 렌더링 될 때 form 이랑 h1 둘 다 숨겨진 상태에서 시작.
+//앱이 시작되면 ,  JS가 local storage에서 savedUsername을 얻는다.
+//if문으로 가서 조건에 맞게 실행 savedUsername이 있으면 paintGreeting 함수 실행 (h1 나타냄)
+//savedUsername 이 없으면 form 을 나타나게 하고 input 태그에서 값을 받아온 후 onLolinSubmit 함수 실행(lacal storage에 키와 값을 저장)
